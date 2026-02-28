@@ -33,7 +33,7 @@ jobs:
         run: find /home/runner/work -name "*.apk" -type f 2>/dev/null || echo "No APK found"
         working-directory: /
 
-     - name: Upload any APK found
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: mig-rf-debug-apk

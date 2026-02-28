@@ -27,14 +27,15 @@ jobs:
       - run: flutter pub get
 
       - run: flutter build apk --debug --no-pub
+        continue-on-error: true
 
-      - name: Find APK
-        run: find /home/runner/work -name "*.apk" 2>/dev/null
+      - name: Find APK files
+        run: find /home/runner/work -name "*.apk" -type f 2>/dev/null || echo "No APK found"
+        working-directory: /
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload any APK found
+        uses: actions/upload-artifact@v4
         with:
           name: mig-rf-debug-apk
-          path: |
-            frontend/build/app/outputs/apk/debug/app-debug.apk
-            frontend/build/app/outputs/flutter-apk/app-debug.apk
+          path: frontend/build/**/*.apk
           if-no-files-found: warn

@@ -8,9 +8,6 @@ on:
 jobs:
   build-apk:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend
     steps:
       - uses: actions/checkout@v4
 
@@ -24,18 +21,24 @@ jobs:
           flutter-version: '3.16.0'
           channel: 'stable'
 
-      - run: flutter pub get
+      - name: Remove old android folder
+        run: rm -rf frontend/android
 
-      - run: flutter build apk --debug --no-pub
-        continue-on-error: true
+      - name: Get dependencies
+        working-directory: frontend
+        run: flutter pub get
 
-      - name: Find APK files
-        run: find /home/runner/work -name "*.apk" -type f 2>/dev/null || echo "No APK found"
-        working-directory: /
+      - name: Recreate android folder
+        working-directory: frontend
+        run: flutter create --platforms android .
+
+      - name: Build APK
+        working-directory: frontend
+        run: flutter build apk --debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: mig-rf-debug-apk
-          path: frontend/android/app/build/outputs/flutter-apk/app-debug.apk
+          path: frontend/build/app/outputs/flutter-apk/app-debug.apk
           if-no-files-found: error

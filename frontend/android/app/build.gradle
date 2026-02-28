@@ -64,6 +64,4 @@ flutter {
 
 dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
-}rains.kotlin:kotlin-stdlib-jdk7:1.9.0"
-    implementation 'androidx.multidex:multidex:2.0.1'
 }

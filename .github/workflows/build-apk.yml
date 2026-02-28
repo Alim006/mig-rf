@@ -33,9 +33,9 @@ jobs:
         run: find /home/runner/work -name "*.apk" -type f 2>/dev/null || echo "No APK found"
         working-directory: /
 
-      - name: Upload any APK found
+     - name: Upload any APK found
         uses: actions/upload-artifact@v4
         with:
           name: mig-rf-debug-apk
-          path: frontend/build/**/*.apk
-          if-no-files-found: warn
+          path: frontend/android/app/build/outputs/flutter-apk/app-debug.apk
+          if-no-files-found: error

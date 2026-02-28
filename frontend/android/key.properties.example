@@ -1,0 +1,10 @@
+# key.properties — НЕ ДОБАВЛЯЙТЕ ЭТОТ ФАЙЛ В GIT!
+# Добавьте его в .gitignore
+#
+# Для генерации keystore:
+# keytool -genkey -v -keystore migrf-release.jks -keyalg RSA -keysize 2048 -validity 10000 -alias migrf
+
+storePassword=YOUR_KEYSTORE_PASSWORD
+keyPassword=YOUR_KEY_PASSWORD
+keyAlias=migrf
+storeFile=../migrf-release.jks

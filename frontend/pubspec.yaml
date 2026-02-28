@@ -55,14 +55,22 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets:
-    - assets/images/
-    - assets/animations/
-  fonts:
-    - family: Rubik
-      fonts:
-        - asset: assets/fonts/Rubik-Regular.ttf
-        - asset: assets/fonts/Rubik-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Rubik-Bold.ttf
-          weight: 700
+```
+
+Нажмите **«Commit changes»**. Сборка запустится снова.
+
+---
+
+**Вариант 2 — Создать папки с placeholder файлами (правильнее)**
+
+GitHub не сохраняет пустые папки. Нужно создать файлы-заглушки внутри каждой папки.
+
+Нажмите **«Add file»** → **«Create new file»** и создайте три файла с такими путями:
+```
+assets/images/.gitkeep
+```
+```
+assets/animations/.gitkeep
+```
+```
+assets/fonts/.gitkeep
